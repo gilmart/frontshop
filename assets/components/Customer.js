@@ -8,6 +8,7 @@ import axios from 'axios';
 export default function Customer() {
   const [isError, setIsError] = useState(false)
   const [message, setMessage] = useState('')
+  const [idSearch, setIdSearch] = useState('')
 
   const { control, handleSubmit, formState: { errors }, reset } = useForm({
     defaultValues: {
@@ -34,6 +35,14 @@ export default function Customer() {
   return (
     <View style={styles.container}>
       <Text>Actualizacion de clientes</Text>
+      <TextInput
+        style={{marginTop:5, marginBottom:5}}
+        label="id del cliente a buscar"
+        mode="outlined"
+        value={idSearch}
+        onChangeText={idSearch => setIdSearch(idSearch)}
+
+      />
       <Controller
         control={control}
         rules={{
@@ -87,7 +96,7 @@ export default function Customer() {
             style={{backgroundColor:'orange', marginLeft:10}}
             icon="content-save"
             mode="contained"
-            onPress={()=> console.log("click buscar")}
+            //onPress={onSearch}
           >  
           Buscar
           </Button>
